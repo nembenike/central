@@ -1,5 +1,5 @@
-import createBot from './bot';
-import createServer from './web';
+import createBot from "./bot";
+import createServer from "./web";
 
 createBot();
 createServer();

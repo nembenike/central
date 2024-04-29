@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "ES2022",
+    "module": "CommonJS",
     "moduleDetection": "force",
+    "esModuleInterop": true,
     "jsx": "react-jsx",
     "allowJs": false,
     "outDir": "dist",
     "rootDir": "src",
-    "moduleResolution": "bundler",
     "strict": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,

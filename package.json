@@ -1,25 +1,22 @@
 {
   "name": "pmccentral",
-  "type": "module",
   "version": "0.1.0",
   "description": "PMC central application",
   "main": "src/index.ts",
   "scripts": {
     "start": "tsc && bun run dist/index.js",
-    "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start:dist": "bun run dist/src/index.js",
-    "lint": "eslint --fix src test",
-    "test": "jest",
+    "lint": "eslint --fix src",
+    "format": "prettier --write \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "Tamás Vince",
   "repository": {
     "type": "git",
-    "url": "https://github.com/w3cj/express-api-starter.git"
+    "url": "https://github.com/petrikmc/central"
   },
-  "license": "MIT",
   "dependencies": {
     "@prisma/client": "5.13.0",
     "bufferutil": "^4.0.8",
@@ -45,8 +42,8 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
     "prisma": "^5.13.0",
-    "supertest": "^6.3.4",
     "typescript": "^5.4.4"
   }
 }
