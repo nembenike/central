@@ -67,6 +67,7 @@ router.post<PluginResponse>("/login", async (req, res) => {
 
   const interaction = sendLoginVerifyRequest(
     existingMinecraftUser?.discord_id as string,
+    ip
   );
 
   res.statusCode = 200;
