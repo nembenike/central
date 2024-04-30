@@ -1,7 +1,7 @@
-import express from "express";
-import prisma from "../../db";
+import express from 'express';
+import prisma from '../../db';
 
-import { sendLoginVerifyRequest } from "../../bot/login";
+import { sendLoginVerifyRequest } from '../../bot/login';
 
 const router = express.Router();
 
@@ -10,13 +10,13 @@ type PluginResponse = {
   message: string;
 };
 
-router.post<PluginResponse>("/login", async (req, res) => {
+router.post<PluginResponse>('/login', async (req, res) => {
   const { username, ip } = req.body;
 
   if (!username) {
     res.statusCode = 400;
     res.json({
-      message: "Minecraft username is required.",
+      message: 'Minecraft username is required.',
     });
     return;
   }
@@ -30,7 +30,7 @@ router.post<PluginResponse>("/login", async (req, res) => {
   if (!existingMinecraftUser) {
     res.statusCode = 404;
     res.json({
-      message: "This Minecraft username is not registered.",
+      message: 'This Minecraft username is not registered.',
     });
     return;
   }
@@ -46,13 +46,13 @@ router.post<PluginResponse>("/login", async (req, res) => {
     if (existingRequest.isValidated) {
       res.statusCode = 204;
       res.json({
-        message: "Already logged in.",
+        message: 'Already logged in.',
       });
       return;
     } else {
       res.statusCode = 403;
       res.json({
-        message: "Login request awaiting.",
+        message: 'Login request awaiting.',
       });
       return;
     }
@@ -67,12 +67,12 @@ router.post<PluginResponse>("/login", async (req, res) => {
 
   const interaction = sendLoginVerifyRequest(
     existingMinecraftUser?.discord_id as string,
-    ip
+    ip,
   );
 
   res.statusCode = 200;
   res.json({
-    message: "Login request sent.",
+    message: 'Login request sent.',
     id: loginRequest.id,
   });
 
@@ -87,7 +87,7 @@ router.post<PluginResponse>("/login", async (req, res) => {
         },
       });
 
-      console.log("Login validated");
+      console.log('Login validated');
     } else {
       await prisma.loginRequest.delete({
         where: {
@@ -95,18 +95,18 @@ router.post<PluginResponse>("/login", async (req, res) => {
         },
       });
 
-      console.log("Session not created");
+      console.log('Session not created');
     }
   });
 });
 
-router.post("/logout", async (req, res) => {
+router.post('/logout', async (req, res) => {
   const { username, ip } = req.body;
 
   if (!username) {
     res.statusCode = 400;
     res.json({
-      message: "Minecraft username is required.",
+      message: 'Minecraft username is required.',
     });
     return;
   }
@@ -120,7 +120,7 @@ router.post("/logout", async (req, res) => {
   if (!existingMinecraftUser) {
     res.statusCode = 404;
     res.json({
-      message: "This Minecraft username is not registered.",
+      message: 'This Minecraft username is not registered.',
     });
     return;
   }
@@ -136,7 +136,7 @@ router.post("/logout", async (req, res) => {
   if (!existingRequest) {
     res.statusCode = 404;
     res.json({
-      message: "No login request found.",
+      message: 'No login request found.',
     });
     return;
   }
@@ -149,7 +149,7 @@ router.post("/logout", async (req, res) => {
 
   res.statusCode = 200;
   res.json({
-    message: "Logged out.",
+    message: 'Logged out.',
   });
 });
 
