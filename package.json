@@ -4,9 +4,8 @@
   "description": "PMC central application",
   "main": "src/index.ts",
   "scripts": {
-    "start": "tsc && bun run dist/index.js",
+    "start": "tsc && node dist/index.js",
     "build": "tsc",
-    "start:dist": "bun run dist/src/index.js",
     "lint": "eslint --fix src",
     "format": "prettier --write \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit"
